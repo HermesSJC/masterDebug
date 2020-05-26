@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>920</width>
     <height>600</height>
    </rect>
   </property>
@@ -16,7 +16,95 @@
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
-     <layout class="QGridLayout" name="mainLayout"/>
+     <layout class="QGridLayout" name="mainLayout">
+      <item row="0" column="0">
+       <widget class="QGroupBox" name="serialReceiveSendGroupBox">
+        <property name="title">
+         <string>串口收发</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_5">
+         <item row="0" column="0">
+          <layout class="QGridLayout" name="serialReceiveSendGroupBoxLayout">
+           <item row="1" column="0">
+            <widget class="QLabel" name="serialSendLabel">
+             <property name="maximumSize">
+              <size>
+               <width>65</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>发送消息:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QLabel" name="serialRecieveLabel">
+             <property name="maximumSize">
+              <size>
+               <width>65</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>接收消息:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="1">
+            <widget class="QCheckBox" name="isNewLineCheckBox">
+             <property name="text">
+              <string>发送新行</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="1">
+            <widget class="QCheckBox" name="isAddTimeCheckBox">
+             <property name="text">
+              <string>时间戳</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QPushButton" name="serialClearSendButton">
+             <property name="text">
+              <string>清除发送</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="2">
+            <widget class="QPushButton" name="serialClearReceiveButton">
+             <property name="text">
+              <string>清除接受</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1" colspan="3">
+            <widget class="QTextEdit" name="serialReceiveTextEdit"/>
+           </item>
+           <item row="1" column="1" colspan="3">
+            <widget class="QLineEdit" name="serialSendLineEdit"/>
+           </item>
+           <item row="3" column="3">
+            <widget class="QPushButton" name="serialClearReceiveSendButton">
+             <property name="text">
+              <string>清除收发</string>
+             </property>
+            </widget>
+           </item>
+           <item row="4" column="3">
+            <widget class="QPushButton" name="serialSingleSendButton">
+             <property name="text">
+              <string>单次发送</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -120,7 +208,130 @@
    <widget class="QWidget" name="systemSettingsWidget">
     <layout class="QGridLayout" name="gridLayout_3">
      <item row="0" column="0">
-      <layout class="QGridLayout" name="systemSettingsLayout"/>
+      <layout class="QGridLayout" name="systemSettingsLayout">
+       <item row="2" column="0">
+        <widget class="QLabel" name="referencePathPointNumLabel">
+         <property name="text">
+          <string>参考路径点个数:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="currentSendReferencePathPointNumLabel">
+         <property name="text">
+          <string>当前发送</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="autorunPathPointNumLabel">
+         <property name="text">
+          <string>自动路径点个数:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLabel" name="referencePathPointValueLabel">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="3">
+        <widget class="QLabel" name="autorunPathPointValueLabel">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLabel" name="currentSendReferencePathPointValueLabel">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="3">
+        <widget class="QLabel" name="currentSendAurorunPathPointValueLabel">
+         <property name="text">
+          <string>0</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLabel" name="currentSendAurorunPathPointNumLabel">
+         <property name="text">
+          <string>当前发送</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QLabel" name="sendTimeIntervalLabel">
+         <property name="text">
+          <string>发送间隔(ms)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QPushButton" name="chooseReferencePathFileButton">
+         <property name="text">
+          <string>选择参考路径</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2" colspan="2">
+        <widget class="QComboBox" name="sendTimeIntervalComboBox"/>
+       </item>
+       <item row="1" column="2" colspan="2">
+        <widget class="QPushButton" name="chooseAutorunPathFileButton">
+         <property name="text">
+          <string>选择自动路径</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2" colspan="2">
+        <widget class="QPushButton" name="continuousSendAutorunPathPointButton">
+         <property name="text">
+          <string>连续发送自动路径</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="2" colspan="2">
+        <widget class="QPushButton" name="singleSendAutorunPathPointButton">
+         <property name="text">
+          <string>单次发送自动路径</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2" colspan="2">
+        <widget class="QPushButton" name="resetSendAutorunPathButton">
+         <property name="text">
+          <string>复位发送自动路径</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0" colspan="2">
+        <widget class="QPushButton" name="continuousSendReferencePathPointButton">
+         <property name="text">
+          <string>连续发送参考路径</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2">
+        <widget class="QPushButton" name="singleSendReferencePathPointButton">
+         <property name="text">
+          <string>单次发送参考路径</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0" colspan="2">
+        <widget class="QPushButton" name="resetSendReferencePathButton">
+         <property name="text">
+          <string>复位发送参考路径</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </widget>
