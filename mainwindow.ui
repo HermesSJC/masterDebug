@@ -35,18 +35,73 @@
    <addaction name="systemSettingsAction"/>
   </widget>
   <widget class="QDockWidget" name="serialSettingsDockWidget">
+   <property name="windowTitle">
+    <string>串口设置</string>
+   </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
    </attribute>
    <widget class="QWidget" name="serialSettingsWidget">
     <layout class="QGridLayout" name="gridLayout_4">
      <item row="0" column="0">
-      <layout class="QGridLayout" name="serialSettingsLayout"/>
+      <layout class="QGridLayout" name="serialSettingsLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="serialPortLabel">
+         <property name="text">
+          <string>串口号</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="serialPortComboBox"/>
+       </item>
+       <item row="2" column="1">
+        <widget class="QPushButton" name="serialDisconnectButton">
+         <property name="text">
+          <string>断开</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="serialBandRateComboBox"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QPushButton" name="serialConnectButton">
+         <property name="text">
+          <string>连接</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="serialBandRateLabel">
+         <property name="text">
+          <string>波特率</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QPushButton" name="serialRefreshButton">
+         <property name="text">
+          <string>刷新</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="NotingLabel">
+         <property name="text">
+          <string>广告位招商</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
     </layout>
    </widget>
   </widget>
   <widget class="QDockWidget" name="systemSettingsDockWidget">
+   <property name="windowTitle">
+    <string>系统设置</string>
+   </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
    </attribute>
@@ -61,7 +116,7 @@
   <action name="serialSettingsAction">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/image/image/serial.png</normaloff>:/image/image/serial.png</iconset>
+     <normaloff>:/image/serialSettings</normaloff>:/image/serialSettings</iconset>
    </property>
    <property name="text">
     <string>serialSettings</string>
@@ -70,7 +125,7 @@
   <action name="systemSettingsAction">
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/image/image/systemSettings.png</normaloff>:/image/image/systemSettings.png</iconset>
+     <normaloff>:/image/systemSettings</normaloff>:/image/systemSettings</iconset>
    </property>
    <property name="text">
     <string>systemSettings</string>
