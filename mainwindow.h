@@ -30,7 +30,7 @@ public:
 private:
 
     QDateTime *dateTime;
-    inline QString getCurrentTime(const QString &format = "hh:ss:mm") { return dateTime->currentDateTime().toString(format); }
+    inline QString GetCurrentTime(const QString &format = "hh:ss:mm") { return dateTime->currentDateTime().toString(format); }
 
     QSerialPort *serialPort;
 
