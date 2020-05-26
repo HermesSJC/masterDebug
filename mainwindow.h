@@ -15,6 +15,17 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_serialSettingsAction_triggered();
+
+    void on_systemSettingsAction_triggered();
+
+    void on_serialConnectButton_clicked();
+
+    void on_serialDisconnectButton_clicked();
+
+    void on_serialRefreshButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

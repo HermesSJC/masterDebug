@@ -60,6 +60,10 @@
          <property name="text">
           <string>断开</string>
          </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/image/serialDisconnect</normaloff>:/image/serialDisconnect</iconset>
+         </property>
         </widget>
        </item>
        <item row="1" column="1">
@@ -69,6 +73,10 @@
         <widget class="QPushButton" name="serialConnectButton">
          <property name="text">
           <string>连接</string>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/image/serialConnect</normaloff>:/image/serialConnect</iconset>
          </property>
         </widget>
        </item>
@@ -83,6 +91,10 @@
         <widget class="QPushButton" name="serialRefreshButton">
          <property name="text">
           <string>刷新</string>
+         </property>
+         <property name="icon">
+          <iconset resource="res.qrc">
+           <normaloff>:/image/serialRefresh</normaloff>:/image/serialRefresh</iconset>
          </property>
         </widget>
        </item>

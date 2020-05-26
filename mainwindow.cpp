@@ -13,3 +13,28 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::on_serialSettingsAction_triggered()
+{
+
+}
+
+void MainWindow::on_systemSettingsAction_triggered()
+{
+
+}
+
+void MainWindow::on_serialConnectButton_clicked()
+{
+
+}
+
+void MainWindow::on_serialDisconnectButton_clicked()
+{
+
+}
+
+void MainWindow::on_serialRefreshButton_clicked()
+{
+
+}
