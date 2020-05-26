@@ -34,6 +34,9 @@ private:
 
     QSerialPort *serialPort;
 
+    QString isNewLine;
+    QString isAddTime;
+
 private slots:
     void on_serialSettingsAction_triggered();
 

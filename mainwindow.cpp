@@ -132,27 +132,58 @@ void MainWindow::on_serialRefreshButton_clicked()
 
 void MainWindow::on_serialClearSendButton_clicked()
 {
+    //清空发送内容
+    ui->serialSendLineEdit->clear();
 
+    //提示
+    statusBar()->showMessage(GetCurrentTime() + QStringLiteral(" 清空发送内容成功"), 2000);
 }
 
 void MainWindow::on_serialClearReceiveSendButton_clicked()
 {
+    //清空一切内容
+    ui->serialSendLineEdit->clear();
+    ui->serialReceiveTextEdit->clear();
+    ui->serialReceiveTextEdit->document()->clear();
 
+    //提示
+    statusBar()->showMessage(GetCurrentTime() + QStringLiteral(" 清空收发内容成功"), 2000);
 }
 
 void MainWindow::on_serialClearReceiveButton_clicked()
 {
+    //清空接受内容
+    ui->serialReceiveTextEdit->clear();
+    ui->serialReceiveTextEdit->document()->clear();
 
+    //提示
+    statusBar()->showMessage(GetCurrentTime() + QStringLiteral(" 清空接受内容成功"), 2000);
 }
 
 void MainWindow::on_serialSingleSendButton_clicked()
 {
+    //判断串口是否打开
+    if(!serialPort->isOpen())
+    {
+        statusBar()->showMessage(GetCurrentTime() + QStringLiteral(" 串口没有打开"), 2000);
+        return;
+    }
+
+    //判断是否存在发送内容
+    if(!ui->serialSendLineEdit->text().isEmpty())
+    {
+        statusBar()->showMessage(GetCurrentTime() + QStringLiteral(" 没有发送内容"), 2000);
+        return;
+    }
+
+
+    //当前内容发送出去
 
 }
 
 void MainWindow::on_isNewLineCheckBox_toggled(bool checked)
 {
-
+    isNewLine = checked ? QString("\r\n") : QString("");
 }
 
 void MainWindow::on_isAddTimeCheckBox_toggled(bool checked)
