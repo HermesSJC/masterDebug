@@ -25,8 +25,30 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="serialSettingsAction"/>
+   <addaction name="systemSettingsAction"/>
   </widget>
+  <action name="serialSettingsAction">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/image/image/serial.png</normaloff>:/image/image/serial.png</iconset>
+   </property>
+   <property name="text">
+    <string>serialSettings</string>
+   </property>
+  </action>
+  <action name="systemSettingsAction">
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/image/image/systemSettings.png</normaloff>:/image/image/systemSettings.png</iconset>
+   </property>
+   <property name="text">
+    <string>systemSettings</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>
