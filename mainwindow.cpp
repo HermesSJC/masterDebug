@@ -79,6 +79,8 @@ void MainWindow::on_serialConnectButton_clicked()
         ui->serialDisconnectButton->setEnabled(true);
         //提示
         statusBar()->showMessage(GetCurrentTime() + QStringLiteral(" 串口打开成功"), 2000);
+
+        connect(serialPort, SIGNAL(readyRead()), this, SLOT(on_serialPort_readyRead()));
     }
     else
     {
@@ -198,5 +200,20 @@ void MainWindow::on_chooseReferencePathFileButton_clicked()
 
 void MainWindow::on_chooseAutorunPathFileButton_clicked()
 {
+
+}
+
+void MainWindow::on_serialPort_readyRead()
+{
+    QByteArray readData = serialPort->readAll();
+    if(isAddTimeFlag)
+    {
+        ui->serialReceiveTextEdit->insertPlainText(GetCurrentTime() + readData);
+    }
+    else
+    {
+        ui->serialReceiveTextEdit->insertPlainText(readData);
+    }
+
 
 }

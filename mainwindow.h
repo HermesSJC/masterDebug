@@ -35,7 +35,7 @@ private:
     QSerialPort *serialPort;
 
     QString isNewLine;
-    QString isAddTime;
+    bool isAddTimeFlag;
 
 private slots:
     void on_serialSettingsAction_triggered();
@@ -63,6 +63,8 @@ private slots:
     void on_chooseReferencePathFileButton_clicked();
 
     void on_chooseAutorunPathFileButton_clicked();
+
+    void on_serialPort_readyRead();
 
 private:
     Ui::MainWindow *ui;
