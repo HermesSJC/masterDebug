@@ -11,12 +11,20 @@ MainWindow::MainWindow(QWidget *parent)
     dateTime = new QDateTime();
     serialPort = new QSerialPort(this);
 
+    isAddTimeFlag = false;
+    isNewLine = QString("");
+
     //添加波特率选项 默认115200
     ui->serialBandRateComboBox->addItem(QString("9600"), QSerialPort::Baud9600);
     ui->serialBandRateComboBox->addItem(QString("38400"), QSerialPort::Baud38400);
     ui->serialBandRateComboBox->addItem(QString("57600"), QSerialPort::Baud57600);
     ui->serialBandRateComboBox->addItem(QString("115200"), QSerialPort::Baud115200);
     ui->serialBandRateComboBox->setCurrentIndex(3);
+
+    //添加时间选项
+    ui->sendTimeIntervalComboBox->addItem(QString("200"), 200);
+    ui->sendTimeIntervalComboBox->addItem(QString("500"), 500);
+    ui->sendTimeIntervalComboBox->addItem(QString("1000"), 1000);
 
     //隐藏断开串口按钮
     ui->serialDisconnectButton->setDisabled(true);
@@ -80,6 +88,7 @@ void MainWindow::on_serialConnectButton_clicked()
         //提示
         statusBar()->showMessage(GetCurrentTime() + QStringLiteral(" 串口打开成功"), 2000);
 
+        //连接信号与槽
         connect(serialPort, SIGNAL(readyRead()), this, SLOT(on_serialPort_readyRead()));
     }
     else
@@ -107,6 +116,9 @@ void MainWindow::on_serialDisconnectButton_clicked()
     ui->serialRefreshButton->setEnabled(true);
     ui->serialConnectButton->setEnabled(true);
     ui->serialDisconnectButton->setDisabled(true);
+
+    //断开连接
+    disconnect(serialPort, SIGNAL(readyRead()), this, SLOT(on_serialPort_readyRead()));
 
     //提示
     statusBar()->showMessage(GetCurrentTime() + QStringLiteral(" 串口关闭成功"), 2000);
@@ -171,16 +183,11 @@ void MainWindow::on_serialSingleSendButton_clicked()
         return;
     }
 
-    //判断是否存在发送内容
-    if(!ui->serialSendLineEdit->text().isEmpty())
-    {
-        statusBar()->showMessage(GetCurrentTime() + QStringLiteral(" 没有发送内容"), 2000);
-        return;
-    }
-
-
     //当前内容发送出去
+    serialPort->write(ui->serialSendLineEdit->text().toLatin1().append(isNewLine));
 
+    //提示
+    statusBar()->showMessage(GetCurrentTime() + QStringLiteral(" 发送成功"), 2000);
 }
 
 void MainWindow::on_isNewLineCheckBox_toggled(bool checked)
@@ -190,7 +197,7 @@ void MainWindow::on_isNewLineCheckBox_toggled(bool checked)
 
 void MainWindow::on_isAddTimeCheckBox_toggled(bool checked)
 {
-
+    isAddTimeFlag = checked;
 }
 
 void MainWindow::on_chooseReferencePathFileButton_clicked()
@@ -208,7 +215,7 @@ void MainWindow::on_serialPort_readyRead()
     QByteArray readData = serialPort->readAll();
     if(isAddTimeFlag)
     {
-        ui->serialReceiveTextEdit->insertPlainText(GetCurrentTime() + readData);
+        ui->serialReceiveTextEdit->insertPlainText(GetCurrentTime().append(" - ") + readData);
     }
     else
     {
