@@ -22,9 +22,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->serialBandRateComboBox->setCurrentIndex(3);
 
     //添加时间选项
-    ui->sendTimeIntervalComboBox->addItem(QString("200"), 200);
-    ui->sendTimeIntervalComboBox->addItem(QString("500"), 500);
-    ui->sendTimeIntervalComboBox->addItem(QString("1000"), 1000);
+    ui->intervalSendTimeComboBox->addItem(QString("200"), 200);
+    ui->intervalSendTimeComboBox->addItem(QString("500"), 500);
+    ui->intervalSendTimeComboBox->addItem(QString("1000"), 1000);
 
     //隐藏断开串口按钮
     ui->serialDisconnectButton->setDisabled(true);
@@ -223,4 +223,9 @@ void MainWindow::on_serialPort_readyRead()
     }
 
 
+}
+
+void MainWindow::on_intervalSendTimeComboBox_currentIndexChanged(int index)
+{
+    nIntervalSendTime = ui->intervalSendTimeComboBox->currentData().toInt();
 }

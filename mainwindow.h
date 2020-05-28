@@ -37,7 +37,10 @@ private:
     QString isNewLine;
     bool isAddTimeFlag;
 
+    int nIntervalSendTime;
+
 private slots:
+
     void on_serialSettingsAction_triggered();
 
     void on_systemSettingsAction_triggered();
@@ -65,6 +68,8 @@ private slots:
     void on_chooseAutorunPathFileButton_clicked();
 
     void on_serialPort_readyRead();
+
+    void on_intervalSendTimeComboBox_currentIndexChanged(int index);
 
 private:
     Ui::MainWindow *ui;
