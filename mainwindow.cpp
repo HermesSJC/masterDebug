@@ -29,6 +29,9 @@ MainWindow::MainWindow(QWidget *parent)
     //隐藏断开串口按钮
     ui->serialDisconnectButton->setDisabled(true);
 
+    //刷新一次串口
+    on_serialRefreshButton_clicked();
+
 
 }
 
@@ -202,17 +205,32 @@ void MainWindow::on_isAddTimeCheckBox_toggled(bool checked)
 
 void MainWindow::on_chooseReferencePathFileButton_clicked()
 {
-
+    QString filePath = QFileDialog::getOpenFileName(this, QStringLiteral("选择参考路径"), currentPath.path());
+    if(filePath.isEmpty())
+    {
+        return;
+    }
 }
 
 void MainWindow::on_chooseAutorunPathFileButton_clicked()
 {
-
+    QString filePath = QFileDialog::getOpenFileName(this, QStringLiteral("选择自动路径"), currentPath.path());
+    if(filePath.isEmpty())
+    {
+        return;
+    }
 }
 
 void MainWindow::on_serialPort_readyRead()
 {
+    //自动移动到末尾
+    QTextCursor textCursor = ui->serialReceiveTextEdit->textCursor();
+    textCursor.movePosition(QTextCursor::End);
+    ui->serialReceiveTextEdit->setTextCursor(textCursor);
+
+    //读取串口内容
     QByteArray readData = serialPort->readAll();
+    //判断有没有时间戳
     if(isAddTimeFlag)
     {
         ui->serialReceiveTextEdit->insertPlainText(GetCurrentTime().append(" - ") + readData);
@@ -221,11 +239,15 @@ void MainWindow::on_serialPort_readyRead()
     {
         ui->serialReceiveTextEdit->insertPlainText(readData);
     }
-
-
 }
 
 void MainWindow::on_intervalSendTimeComboBox_currentIndexChanged(int index)
 {
     nIntervalSendTime = ui->intervalSendTimeComboBox->currentData().toInt();
+}
+
+
+void MainWindow::timerEvent(QTimerEvent *event)
+{
+
 }

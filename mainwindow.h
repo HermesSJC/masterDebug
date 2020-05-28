@@ -39,6 +39,13 @@ private:
 
     int nIntervalSendTime;
 
+    QDir currentPath;
+
+protected:
+
+    void timerEvent(QTimerEvent *event);
+
+
 private slots:
 
     void on_serialSettingsAction_triggered();
